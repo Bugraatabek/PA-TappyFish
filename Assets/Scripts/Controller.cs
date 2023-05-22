@@ -4,15 +4,22 @@ using UnityEngine;
 
 public class Controller : MonoBehaviour
 {
-    // Start is called before the first frame update
-    void Start()
+    [SerializeField] float jumpForce = 1f;
+    Rigidbody2D rb;
+    private void Awake() 
     {
-        
+        rb = GetComponent<Rigidbody2D>();
     }
-
-    // Update is called once per frame
     void Update()
     {
-        
+        if(Input.GetKeyDown(KeyCode.Space))
+        {
+            Jump();
+        }
+    } 
+
+    private void Jump()
+    {
+        rb.AddForce(transform.up * jumpForce);
     }
 }
